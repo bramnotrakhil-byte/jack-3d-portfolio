@@ -31,88 +31,84 @@ const profileImage =
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#0b0d0d] px-3 py-6 sm:px-5 lg:px-8">
+    <div className="portfolio-shell">
       <motion.main
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        className="mx-auto max-w-[1180px] overflow-hidden rounded-[10px] bg-[#f4f4f4] shadow-[0_25px_80px_rgba(0,0,0,0.38)]"
+        className="portfolio-card"
       >
-        <div className="grid md:grid-cols-[0.95fr_1.15fr]">
-          <aside className="bg-[#9bb3af] px-4 py-7 sm:px-6 lg:px-8">
+        <div className="portfolio-grid">
+          <aside className="left-panel">
             <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
-              className="mx-auto mb-8 flex w-[220px] items-center justify-center overflow-hidden rounded-full border-[5px] border-white bg-white shadow-[0_15px_35px_rgba(0,0,0,0.18)] sm:w-[270px]"
+              animate={{ y: [0, -9, 0], rotate: [0, -1.2, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              className="portrait-wrap"
             >
+              <div className="portrait-glow" />
               <img
                 src={profileImage}
                 alt="Akhil Kumar portrait"
-                className="h-[220px] w-[220px] object-cover sm:h-[270px] sm:w-[270px]"
+                className="portrait-photo"
               />
             </motion.div>
 
-            <section className="mb-10">
-              <h2 className="mb-3 text-[1.9rem] font-semibold uppercase tracking-[0.08em] text-[#213837]">Profile</h2>
-              <p className="max-w-[18rem] text-[1.02rem] leading-[1.7] text-[#213837] opacity-90">
+            <section className="side-section profile-section">
+              <h2>Profile</h2>
+              <p>
                 I consider my self a responsible and orderly person.
                 <br />
                 I am looking forward for my first work experience.
               </p>
             </section>
 
-            <section>
-              <h2 className="mb-4 text-[1.9rem] font-semibold uppercase tracking-[0.08em] text-[#213837]">Contact Me</h2>
-              <div className="space-y-4 text-[#213837]">
+            <section className="side-section contact-section">
+              <h2>Contact Me</h2>
+              <div className="contact-list">
                 {contactItems.map(({ icon: Icon, value }) => (
-                  <div key={value} className="flex items-start gap-3">
-                    <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-white/25 text-[#213837]">
+                  <div key={value} className="contact-item">
+                    <div className="contact-icon">
                       <Icon size={16} />
                     </div>
-                    <span className="whitespace-pre-line text-[1rem] font-medium leading-[1.5] tracking-[0.02em]">
-                      {value}
-                    </span>
+                    <span>{value}</span>
                   </div>
                 ))}
               </div>
             </section>
           </aside>
 
-          <div className="bg-[#f0ece8]">
-            <div className="bg-[#e7d5c8] px-6 py-8 sm:px-8 lg:px-10 lg:py-10">
+          <div className="content-panel">
+            <div className="identity-block">
               <motion.h1
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, duration: 0.7 }}
-                className="font-serif text-[2.9rem] uppercase leading-[0.9] tracking-[0.05em] text-[#223634] sm:text-[4.1rem]"
               >
                 AKHIL
                 <br />
                 KUMAR
               </motion.h1>
-              <p className="mt-3 text-[1.2rem] font-medium italic text-[#223634]">10 july 2003</p>
+              <p>10 july 2003</p>
             </div>
 
-            <div className="bg-[#f4f4f4] px-6 py-8 sm:px-8 lg:px-10">
-              <div className="space-y-8">
+            <div className="details-block">
+              <div className="details-stack">
                 <Section title="Education" icon={<ArrowRight size={18} />}>
                   {education.map((item) => (
-                    <div key={item.degree + item.year} className="mb-5 last:mb-0">
-                      <p className="text-[1.05rem] font-semibold uppercase leading-tight tracking-[0.03em] text-[#223634]">
-                        {item.degree}
-                      </p>
-                      <p className="mt-1 text-[1rem] leading-relaxed text-[#223634] opacity-90">{item.detail}</p>
-                      <p className="mt-1 text-[1rem] text-[#223634] opacity-80">{item.year}</p>
+                    <div key={item.degree + item.year} className="info-block">
+                      <p className="info-heading">{item.degree}</p>
+                      <p className="info-detail">{item.detail}</p>
+                      <p className="info-year">{item.year}</p>
                     </div>
                   ))}
                 </Section>
 
                 <Section title="Language" icon={<ArrowRight size={18} />} compact>
-                  <p className="text-[1.05rem] font-semibold uppercase tracking-[0.06em] text-[#223634]">HINDI, ENGLISH</p>
+                  <p className="plain-text">HINDI, ENGLISH</p>
                 </Section>
 
                 <Section title="Qualities" icon={<ArrowRight size={18} />}>
-                  <ul className="space-y-1.5 text-[1rem] leading-[1.9] text-[#223634] opacity-95">
+                  <ul className="bullet-list">
                     {qualities.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
@@ -120,7 +116,7 @@ function App() {
                 </Section>
 
                 <Section title="Career Objective" icon={<ArrowRight size={18} />}>
-                  <div className="space-y-3 text-[0.98rem] leading-[1.75] text-[#223634] opacity-95">
+                  <div className="career-copy">
                     {careerPoints.map((point) => (
                       <p key={point}>{point}</p>
                     ))}
@@ -144,12 +140,10 @@ type SectionProps = {
 
 function Section({ title, icon, children, compact = false }: SectionProps) {
   return (
-    <section>
-      <div className="mb-4 flex items-center gap-3 text-[#223634]">
-        <div className="flex h-6 w-6 items-center justify-center">{icon}</div>
-        <h3 className={`font-semibold uppercase tracking-[0.08em] text-[#223634] ${compact ? 'text-[1.5rem]' : 'text-[1.65rem]'}`}>
-          {title}
-        </h3>
+    <section className="section-block">
+      <div className="section-header">
+        <div className="section-arrow">{icon}</div>
+        <h3 className={compact ? 'compact-title' : 'section-title'}>{title}</h3>
       </div>
       {children}
     </section>
